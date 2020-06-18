@@ -1,14 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
-
-class User(models.Model):
-    name = models.CharField(max_length=20)
-    password = models.TextField(default="")
-    last_login = models.DateTimeField('last login')
-    
-    def __str__(self): 
-        return "id: " + str(self.id)+ ", name: "+str(self.name)+", last_login: "+str(self.last_login)
 
 class Survey(models.Model): 
     name = models.CharField(max_length=20)
