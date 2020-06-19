@@ -1,0 +1,31 @@
+<center>
+
+<h2> {{s.name}}</h2>
+
+<p> Agrega las preguntas para tu encuesta </p>
+
+{% if questions %}
+
+    {% for question in questions %}
+        <li><a href="">{{ question.text }}</a></li>
+    {% endfor %}
+
+{% else %}
+    <p>No hay preguntas todavia</p>
+
+{% endif %}
+
+<form method="POST" action="{% url 'survey:create_questions' s.id %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="add_question" value="Agregar pregunta"> 
+    <input type="submit" name="add_options" value="Agregar opciones a la pregunta">
+</form>
+
+
+{% if questions %}
+<a href="{% url 'survey:index' %}">Terminar encuesta</a>
+    
+{% endif %}
+</center>
+

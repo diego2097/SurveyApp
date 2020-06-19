@@ -1,0 +1,27 @@
+<center>
+
+    <h2> {{q.name}}</h2>
+    
+    <p> Agrega las opciones para tu pregunta </p>
+    
+    {% if options %}
+    
+        {% for option in options %}
+            <li>{{ option.text }}</li>
+        {% endfor %}
+    
+    {% else %}
+        <p>No hay opciones para esta pregunta aun</p>
+    
+    {% endif %}
+    
+    <form method="POST" action="{% url 'survey:add_options' s.id q.id %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" name="add_option" value="Agregar opcion"> 
+    </form>
+</center>
+{% if options %}
+<a href="{% url 'survey:create_survey_questions' s.id %}">Volver</a>
+    
+{% endif %}

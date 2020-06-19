@@ -1,0 +1,14 @@
+{% if available_surveys_list %}
+    <h2>Encuestas disponibles</h2>
+    <p>Haga click en la encuesta que desee responder</p>
+    <ul>
+    {% for survey in available_surveys_list %}
+        <li><a href="{% url 'survey:response' survey.id %}">{{ survey.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay encuestas disponibles</p>
+{% endif %}
+
+
+<a href="/">Volver</a>

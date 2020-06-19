@@ -1,9 +1,10 @@
-<h2>Área para miembros</h2>
+<h2>Bienvenido al sitio de las mejores encuestas de la web</h2>
 
-<p>
-    Bienvenido <b>{{request.user.username}}</b>, 
-    esta página es exclusiva para usuarios registrados.
-</p>
+    <ul>
+        <li><a href="{% url 'survey:surveys' request.user.id %}"> Buscar encuestas </a>
+        <li><a href="{% url 'survey:my_surveys' request.user.id %}"> Mis encuestas </a>
+        <li><a href="{% url 'survey:create_survey' %}"> Crear encuesta </a>
+    </ul>
 
 <hr />
 <a href="/accounts/logout">Cerrar sesión</a>

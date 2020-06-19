@@ -1,0 +1,11 @@
+<center>
+    <h2>Crea tu encuesta</h2>
+
+<form method="POST" action="{% url 'survey:create_survey' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="crear">
+</form>
+
+<a href="/">Volver</a>
+</center>

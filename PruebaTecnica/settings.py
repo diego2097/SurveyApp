@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'PruebaTecnica.urls'
+LOGIN_URL = "accounts/login"
 
 TEMPLATES = [
     {

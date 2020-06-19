@@ -1,0 +1,14 @@
+{% if my_surveys_list %}
+    <h2>Mis encuestas</h2>
+    <p>Da click en la encuesta para ver sus resultados</p>
+    <ul>
+    {% for survey in my_surveys_list %}
+        <li><a href="{% url 'survey:results' survey.id %}">{{ survey.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes encuestas por ahora</p>
+    <a href="{% url 'survey:create_survey' %}"> Crea una encuesta aqui</a>
+{% endif %}
+<br><br>
+<a href="/">Volver</a>
