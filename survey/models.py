@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Survey(models.Model): 
-    name = models.CharField(max_length=20)
+    name = models.TextField()
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_questions(self):
@@ -23,7 +23,7 @@ class Question(models.Model):
         MULTIC = 'MC', _('Multiple Choice')
     
     QType = models.CharField(
-            max_length=2,
+            max_length=200,
             choices=QuestionType.choices,
             default=QuestionType.TEXT,
         )
