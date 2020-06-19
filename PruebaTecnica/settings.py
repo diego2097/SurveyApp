@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for PruebaTecnica project.
 
@@ -121,3 +122,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
