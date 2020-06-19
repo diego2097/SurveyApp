@@ -3,7 +3,7 @@
     <p>Haga click en la encuesta que desee responder</p>
     <ul>
     {% for survey in available_surveys_list %}
-        <li><a href="{% url 'survey:response' survey.id %}">{{ survey.name }}</a></li>
+        <li><a href="">{{ survey.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
