@@ -7,7 +7,11 @@
 {% if questions %}
 
     {% for question in questions %}
-        <li><a href="">{{ question.text }}</a></li>
+        {% if question.QType == "Text" %}
+        <li>{{ question.text }}</li>
+        {% else %}
+        <li><a href="{% url 'survey:create_question_options' s.id question.id %}">{{ question.text }}</a></li>
+        {% endif %}
     {% endfor %}
 
 {% else %}

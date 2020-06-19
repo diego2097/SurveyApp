@@ -1,0 +1,11 @@
+<h2> {{survey.name}} </h2>
+
+    {% for question in survey.get_questions %}
+        {% if question.QType == "Text" %}
+        <li>{{ question.text }}</li>
+        {% else %}
+        <li><a href="{% url 'survey:view_options' survey.id question.id %}">{{ question.text }}</a></li>
+        {% endif %}
+    {% endfor %}
+
+<a href="{% url 'survey:my_surveys' request.user.id %}">Volver</a>

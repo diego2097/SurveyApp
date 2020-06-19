@@ -15,6 +15,10 @@ urlpatterns = [
     path('create_survey/<int:survey_id>/create_options/<int:question_id>',views.CreateQuestionsOptions, name="create_question_options"),
     path('add_options/<int:survey_id>/<int:question_id>', views.CreateOptions, name="add_options"),
 
+    path('delete_option/<int:option_id>/<int:survey_id>/<int:question_id>', views.DeleteOptions, name="delete_option"),
+
+    path('view_options/<int:survey_id>/<int:question_id>', views.ViewOptions, name="view_options"),
+    
     path('<int:pk>/response', views.ResponseView.as_view(), name='response'),
     path('<int:pk>/results', views.ResultsView.as_view(), name='results'),
 ]

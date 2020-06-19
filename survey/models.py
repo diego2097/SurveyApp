@@ -7,6 +7,9 @@ class Survey(models.Model):
     name = models.CharField(max_length=20)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def get_questions(self):
+        return self.question_set.all()
+
     def __str__(self): 
         return "id: "+str(self.id)+", name: "+str(self.name)+", created_by: "+str(self.created_by.id) 
 

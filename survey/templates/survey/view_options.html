@@ -1,0 +1,8 @@
+<h2> Opciones para la pregunta:  {{q.text}}</h2>
+
+{% for option in options %}
+            <li>{{ option.text }}
+            </li>
+{% endfor %}
+
+<a href="{% url 'survey:results' s.id %}">Volver</a>
