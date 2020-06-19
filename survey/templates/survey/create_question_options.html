@@ -9,7 +9,7 @@
         {% for option in options %}
             <li>{{ option.text }}
                 <form action="{% url 'survey:delete_option' option.id s.id q.id %}" 
-                       style="display: inline;" 
+                       style="display: inline; margin-left: 1%;" 
                        method="POST"> {% csrf_token %} 
                     <input type="submit" value="Eliminar opcion"/>
                 </form>

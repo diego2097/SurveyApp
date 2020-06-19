@@ -3,7 +3,13 @@
     <p>Da click en la encuesta para ver sus resultados</p>
     <ul>
     {% for survey in my_surveys_list %}
-        <li><a href="{% url 'survey:results' survey.id %}">{{ survey.name }}</a></li>
+        <li><a href="{% url 'survey:results' survey.id %}">{{ survey.name }}
+            <form action="{% url 'survey:delete_survey' survey.id %}" 
+            style="display: inline; margin-left: 1%;" 
+            method="POST"> {% csrf_token %} 
+            <input type="submit" value="Eliminar encuesta"/>
+            </form>
+        </a></li>
     {% endfor %}
     </ul>
 {% else %}

@@ -8,9 +8,21 @@
 
     {% for question in questions %}
         {% if question.QType == "Text" %}
-        <li>{{ question.text }}</li>
+        <li>{{ question.text }}
+            <form action="{% url 'survey:delete_question' s.id question.id %}" 
+            style="display: inline; margin-left: 1%;" 
+            method="POST"> {% csrf_token %} 
+            <input type="submit" value="Eliminar pregunta"/>
+            </form>
+        </li>
         {% else %}
-        <li><a href="{% url 'survey:create_question_options' s.id question.id %}">{{ question.text }}</a></li>
+        <li><a href="{% url 'survey:create_question_options' s.id question.id %}">{{ question.text }}
+            <form action="{% url 'survey:delete_question' s.id question.id %}" 
+            style="display: inline; margin-left: 1%;" 
+            method="POST"> {% csrf_token %} 
+            <input type="submit" value="Eliminar pregunta"/>
+            </form>
+        </a></li>
         {% endif %}
     {% endfor %}
 

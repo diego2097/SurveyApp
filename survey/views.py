@@ -34,6 +34,12 @@ class MySurveysView(LoginRequiredMixin,generic.ListView):
         """Retorna la lista de encuestas creadas por el usuario"""
         return User.objects.get(pk=self.kwargs['user_id']).survey_set.all()
     
+#Este endpoint se encarga de eliminar una encuesta
+def DeleteSurvey(request,survey_id):
+    survey = Survey.objects.get(pk=survey_id)
+    survey.delete()
+    return HttpResponseRedirect(reverse('survey:my_surveys', args=(request.user.id,)))
+
 #Esta vista es la encargada de crear la encuesta    
 @login_required
 def CreateSurveyView(request):
@@ -71,6 +77,13 @@ def CreateQuestions(request,survey_id):
             q = s.question_set.create(text=text, QType= Question.QuestionType.SINGC.label)
             return HttpResponseRedirect(reverse('survey:create_question_options', args=(s.id,q.id,)))
     return HttpResponseRedirect(reverse('survey:create_survey_questions', args=(s.id,)))
+
+#Este es el endpoint para borrar preguntas
+@login_required
+def DeleteQuestion(request,survey_id,question_id):
+    question = Question.objects.get(pk=question_id)
+    question.delete()
+    return HttpResponseRedirect(reverse('survey:create_survey_questions', args=(survey_id,)))
 
 #Esta es la vista encargada de renderizar el formulario para agregar opciones
 @login_required
