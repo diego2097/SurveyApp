@@ -15,7 +15,7 @@ class Survey(models.Model):
 
 class Question(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    text = models.CharField(max_length=200)
+    text = models.TextField()
 
     class QuestionType(models.TextChoices):   
         TEXT = 'TE', _('Text')
@@ -32,7 +32,7 @@ class Question(models.Model):
 
 class Option(models.Model):
     order = models.ForeignKey(Question, on_delete=models.CASCADE)
-    text = models.CharField(max_length=200)
+    text = models.TextField()
 
     def __str__(self): 
         return "id: "+str(self.id)+", order: "+str(self.order.id)+", text: "+str(self.text)     
